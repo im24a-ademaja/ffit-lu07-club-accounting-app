@@ -1,13 +1,19 @@
 package ch.bzz.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import ch.bzz.generated.api.HelloApi;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class HelloController implements HelloApi {
 
-    @GetMapping("/api/hello")
-    public String hello() {
-        return "Hello World!";
+    @Override
+    public ResponseEntity<String> getRoot() {
+        return ResponseEntity.ok("Club Accounting API is running. Try /api/hello");
+    }
+
+    @Override
+    public ResponseEntity<String> getHello() {
+        return ResponseEntity.ok("Hello World!");
     }
 }
